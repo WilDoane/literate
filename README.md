@@ -11,7 +11,7 @@ install.packages("literate")
 ```
 -->
 
-YTou can install the development version of literate from [Github](https://github.com/WilDoane/literate) using devtools:
+You can install the development version of literate from [Github](https://github.com/WilDoane/literate) using devtools:
 
 ```r
 if (!require(devtools)) install.packages("devtools", dependencies = TRUE)

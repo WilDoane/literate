@@ -9,3 +9,6 @@ Description: Converts commented R code to a literate programming inspired HTML s
 License: TBD
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    rstudioapi,
+    rmarkdown

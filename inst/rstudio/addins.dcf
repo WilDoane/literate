@@ -1,0 +1,4 @@
+Name: Literate
+Description: Converts commented R code to a literate programming inspired HTML style.
+Binding: literate
+Interactive: false

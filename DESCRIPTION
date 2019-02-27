@@ -1,0 +1,11 @@
+Package: literate
+Type: Package
+Title: Converts commented R code to a literate programming inspired HTML style
+Version: 0.1.0
+Author: William E. J. Doane <wil@DrDoane.com>
+Maintainer: William E. J. Doane <wil@DrDoane.com>
+Description: Converts commented R code to a literate programming inspired HTML style.
+    Inspired by Donald Knuth's Literate Programming and Edward Tufte's handout format style.
+License: TBD
+Encoding: UTF-8
+LazyData: true

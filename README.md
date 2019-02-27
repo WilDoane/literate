@@ -30,4 +30,16 @@ This package installs an add-in to RStudio. To use it, open an R script in RStdu
 
 ![Example of literate output](/images/sample.png?raw=true "Literate output")
 
+## Options
+
+Users can override the default color and font-familt CSS properties used by literate by setting R options:
+
+options(literate.code.font.family = "Arial")
+options(literate.code.color = "#ffffff")
+options(literate.code.background.color = "#999999")
+options(literate.comments.font.family = "serif")
+options(literate.comments.background.color = "#cccccc")
+options(literate.comments.color = "#0000cc")
+
+
 

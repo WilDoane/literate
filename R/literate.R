@@ -24,6 +24,14 @@
 #' @examples
 literate <- function() {
 
+  code.font.family <- getOption("literate.code.font.family", default = "'Fira Code', monospace")
+  code.color <- getOption("literate.code.color", default = "#000000")
+  code.background.color <- getOption("literate.code.background.color", default = "#ffffff")
+
+  comments.font.family <- getOption("literate.comments.font.family", default = "cursive")
+  comments.color <- getOption("literate.comments.color", default = "#888888")
+  comments.background.color <- getOption("literate.comments.background.color", default = "#ffffff")
+
   src <- rstudioapi::getSourceEditorContext()$contents
 
   filename_r <- tempfile()
@@ -44,11 +52,13 @@ literate <- function() {
   # src <- sub("^[\t ]+\\|", "&nbsp; |", src)
 
   # Prepend custom CSS and MD table header
-  src <- c("<style>
+  src <- c(sprintf("<style>
               table.table>tbody>tr>td, table.table>thead>tr>th {border: 0;}
-              code {font-family: 'Fira Code', monospace; background-color:#ffffff;}
-              .comments {font-family: cursive; color:#888888;}
+              code {font-family: %s; color: %s; background-color:%s;}
+              .comments {font-family: %s; color: %s; background-color:%s;}
             </style>",
+                   code.font.family, code.color, code.background.color,
+                   comments.font.family, comments.color, comments.background.color),
            "&nbsp; | &nbsp;", # table header row
            "-- | --", src)
 

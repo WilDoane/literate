@@ -32,7 +32,7 @@ This package installs an add-in to RStudio. To use it, open an R script in RStdu
 
 ## Options
 
-Users can override the default color and font-familt CSS properties used by literate by setting R options:
+Users can override the default color, background-color, and font-family CSS properties used by literate by setting R options:
 
 options(literate.code.font.family = "Arial")
 options(literate.code.color = "#ffffff")

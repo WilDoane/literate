@@ -35,7 +35,7 @@ literate(c("ascript.R", "another.R"))
 literate(list.files(".", "\\.R$", full.names = TRUE))
 ```
 
-This package installs an add-in to RStudio. To use it, open an R script in RStduio's source code editor, then select **Literate** from the Addins menu. This will generate an HTML file which will open in the RStudio Viewer pane or in your local default web browser.
+This package also installs an add-in to RStudio. To use it, open an R script in RStudio's source code editor, then select **Literate** from the Addins menu. This will generate an HTML file which will open in the RStudio Viewer pane or in your local default web browser.
 
 ![Example of literate output](/images/sample.png?raw=true "Literate output")
 

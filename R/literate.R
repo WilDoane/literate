@@ -16,13 +16,25 @@
 # http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/tufte-latex/sample-handout.pdf
 
 
-#' Literate (v. "litter ate")
+#' Literate (v. "litter eight")
+#'
+#' @param filename NULL or a character vector of 1 or more file paths to R scripts
+#' @param save If FALSE, tempfiles are created; if TRUE, .html files are created alongside the source files
+#' @param ... Currently unused
+#' @param outdir
 #'
 #' @return
 #' @export
 #'
 #' @examples
-literate <- function() {
+#' literate() # processes current source code editor's contents
+#' literate("ascript.R")
+#' literate(c("ascript.R", "another.R"))
+#' literate(list.files(".", "\\.R$", full.names = TRUE))
+
+literate <- function(filename = NULL, ..., viewer = rstudioapi::viewer) {
+
+  if (length(filename) > 1) return(invisible(lapply(filename, literate, ..., viewer = rstudioapi::viewer)))
 
   code.font.family <- getOption("literate.code.font.family", default = "'Fira Code', monospace")
   code.color <- getOption("literate.code.color", default = "#000000")
@@ -32,9 +44,12 @@ literate <- function() {
   comments.color <- getOption("literate.comments.color", default = "#888888")
   comments.background.color <- getOption("literate.comments.background.color", default = "#ffffff")
 
-  src <- rstudioapi::getSourceEditorContext()$contents
+  src <-
+    if (is.null(filename)) rstudioapi::getSourceEditorContext()$contents
+    else readLines(filename, encoding = "UTF-8")
 
-  filename_r <- tempfile()
+  filename_r <- if (is.null(filename)) tempfile() else filename
+
   filename_md <- paste0(filename_r, ".md")
   filename_html <- paste0(filename_r, ".html")
 
@@ -67,6 +82,8 @@ literate <- function() {
 
   rmarkdown::render(filename_md, "html_document", output_file = filename_html)
 
+  unlink(filename_md)
+
   # Now, in HTML, force lines that were ONLY a comment to span 2 columns
   src <- readLines(filename_html)
 
@@ -78,7 +95,7 @@ literate <- function() {
 
   writeLines(src, filename_html)
 
-  rstudioapi::viewer(filename_html)
+  viewer(filename_html)
 
 }
 

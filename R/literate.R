@@ -21,7 +21,6 @@
 #' @param filename NULL or a character vector of 1 or more file paths to R scripts
 #' @param save If FALSE, tempfiles are created; if TRUE, .html files are created alongside the source files
 #' @param ... Currently unused
-#' @param outdir
 #'
 #' @return
 #' @export

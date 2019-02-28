@@ -45,6 +45,7 @@ literate <- function() {
 
   # Case 2: lines with # only within quotation marks
   src <- sub("^(.*\".*\"[^#]*)$", "\\1#", src)
+  src <- sub("^(.*'.*'[^#]*)$", "\\1#", src)
 
   # Format all lines as MD table
   src <- sub("^(.*)#([^#]*)$", "<code>\\1</code> | <span class=\"comments\">\\2</span>", src)
